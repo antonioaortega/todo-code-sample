@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { addTodo, deleteTodo, modifyTodo } from '../actions/actions';
+import TodoItem from './TodoItem';
+import TodoUpdate from './TodoUpdate';
+import TodoMainInput from './TodoMainInput';
 
 const TodoList: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -41,64 +44,27 @@ const TodoList: React.FC = () => {
 
   return (
     <div className='todo-container'>
-      <h1>Todo List</h1>
-      <input
-        type="text"
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        placeholder="Enter a new todo"
-        className='todo-input'
+      <TodoMainInput
+        inputText={inputText}
+        setInputText={setInputText}
+        handleAddTodo={handleAddTodo}
       />
-      <button
-        onClick={handleAddTodo}
-        className='add-todo-button'
-      >
-        Add Todo
-      </button>
       <ul className='todo-list'>
         {todos.map((todo) => (
           <li key={todo.id} className='todo-item'>
             {modifyId === todo.id ? (
-              <>
-                <input
-                  type="text"
-                  value={modifyText}
-                  onChange={(e) => setModifyText(e.target.value)}
-                  className='modify-todo-input'
-                />
-                <button 
-                  onClick={handleModifySave}
-                  className={`todo-buttons modify-todo-button`}
-                >
-                  Save
-                </button>
-                <button 
-                  onClick={handleModifyCancel}
-                  className={`todo-buttons modify-todo-button`}
-                >
-                  Cancel
-                </button>
-              </>
+              <TodoUpdate
+                modifyText={modifyText}
+                setModifyText={setModifyText}
+                handleModifySave={handleModifySave}
+                handleModifyCancel={handleModifyCancel}
+              />
             ) : (
-              <>
-                <div className='modify-todo-ul-container'>
-                  <span>{todo.text}</span>
-                  <div className='modify-todo-ul-button-container'>
-                    <button
-                      onClick={() => handleModifyStart(todo.id, todo.text)}
-                      className={`todo-buttons modify-todo-button`}
-                    >
-                      Modify
-                    </button>
-                    <button
-                      onClick={() => handleDeleteTodo(todo.id)}
-                      className={`todo-buttons delete-todo-button`}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </>
+              <TodoItem
+                todo={todo}
+                handleModifyStart={handleModifyStart}
+                handleDeleteTodo={handleDeleteTodo}  
+              />
             )}
           </li>
         ))}
