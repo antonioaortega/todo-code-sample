@@ -81,19 +81,23 @@ const TodoList: React.FC = () => {
               </>
             ) : (
               <>
-                <span>{todo.text}</span>
-                <button
-                  onClick={() => handleModifyStart(todo.id, todo.text)}
-                  className={`todo-buttons modify-todo-button`}
-                >
-                  Modify
-                </button>
-                <button
-                  onClick={() => handleDeleteTodo(todo.id)}
-                  className={`todo-buttons delete-todo-button`}
-                >
-                  Delete
-                </button>
+                <div className='modify-todo-ul-container'>
+                  <span>{todo.text}</span>
+                  <div className='modify-todo-ul-button-container'>
+                    <button
+                      onClick={() => handleModifyStart(todo.id, todo.text)}
+                      className={`todo-buttons modify-todo-button`}
+                    >
+                      Modify
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTodo(todo.id)}
+                      className={`todo-buttons delete-todo-button`}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </>
             )}
           </li>
