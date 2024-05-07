@@ -40,33 +40,60 @@ const TodoList: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className='todo-container'>
       <h1>Todo List</h1>
       <input
         type="text"
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}
         placeholder="Enter a new todo"
+        className='todo-input'
       />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <ul>
+      <button
+        onClick={handleAddTodo}
+        className='add-todo-button'
+      >
+        Add Todo
+      </button>
+      <ul className='todo-list'>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li key={todo.id} className='todo-item'>
             {modifyId === todo.id ? (
               <>
                 <input
                   type="text"
                   value={modifyText}
                   onChange={(e) => setModifyText(e.target.value)}
+                  className='modify-todo-input'
                 />
-                <button onClick={handleModifySave}>Save</button>
-                <button onClick={handleModifyCancel}>Cancel</button>
+                <button 
+                  onClick={handleModifySave}
+                  className={`todo-buttons modify-todo-button`}
+                >
+                  Save
+                </button>
+                <button 
+                  onClick={handleModifyCancel}
+                  className={`todo-buttons modify-todo-button`}
+                >
+                  Cancel
+                </button>
               </>
             ) : (
               <>
                 <span>{todo.text}</span>
-                <button onClick={() => handleModifyStart(todo.id, todo.text)}>Modify</button>
-                <button onClick={() => handleDeleteTodo(todo.id)}>Delete</button>
+                <button
+                  onClick={() => handleModifyStart(todo.id, todo.text)}
+                  className={`todo-buttons modify-todo-button`}
+                >
+                  Modify
+                </button>
+                <button
+                  onClick={() => handleDeleteTodo(todo.id)}
+                  className={`todo-buttons delete-todo-button`}
+                >
+                  Delete
+                </button>
               </>
             )}
           </li>
