@@ -9,7 +9,7 @@ const TodoMainInput = (props: any) => {
 
     return (
         <>
-            <h1>Todo List</h1>
+            <h1 data-testid='test-todo-title'>Todo List</h1>
             <input
                 type="text"
                 value={inputText}
