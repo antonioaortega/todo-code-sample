@@ -1,6 +1,9 @@
 import React from 'react';
+import {
+    TodoItemProps,
+} from './../types/interfaces';
 
-const TodoItem = (props: any) => {
+const TodoItem = (props: TodoItemProps) => {
     const { 
         todo,
         handleModifyStart,

@@ -1,6 +1,7 @@
 import React from 'react';
+import { TodoMainInputProps } from '../types/interfaces';
 
-const TodoMainInput = (props: any) => {
+const TodoMainInput = (props: TodoMainInputProps) => {
     const {
         inputText,
         setInputText,

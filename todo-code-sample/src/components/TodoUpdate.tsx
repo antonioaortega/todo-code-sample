@@ -1,6 +1,7 @@
 import React from 'react';
+import { TodoUpdateProps } from '../types/interfaces';
 
-const TodoUpdate = (props: any) => {
+const TodoUpdate = (props: TodoUpdateProps) => {
     const {
         modifyText,
         setModifyText,

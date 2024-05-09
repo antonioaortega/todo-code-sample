@@ -1,15 +1,6 @@
 import { combineReducers } from 'redux';
 import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, MODIFY_TODO } from '../types/types';
-
-interface Todo {
-  id: number;
-  text: string;
-  completed: boolean;
-}
-
-interface TodosState {
-  todos: Todo[];
-}
+import { TodosState } from '../types/interfaces';
 
 const initialState: TodosState = {
   todos: []
